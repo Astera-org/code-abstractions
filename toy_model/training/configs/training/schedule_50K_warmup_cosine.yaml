@@ -1,0 +1,24 @@
+num_steps: 50000
+batch_size: 512
+log_cheap_every: 100
+log_expensive_every: 1000
+log_activations_every: 1000
+evaluate_every: 500
+checkpoint_every: 5000
+validation_multiplier: 0.5
+analysis_batch_size: 2048
+
+# Manual learning-rate schedule: linear warmup then cosine decay.
+# Overrides the torch lr_scheduler (which only ever ran constant LR before).
+# Base LR comes from the optimizer (pytorch_adam: 1e-3).
+lr_schedule: warmup_cosine
+lr_warmup_steps: 1500     # ~3% of training
+lr_min: 1.0e-6            # cosine floor
+
+# Standard (non-aggressive) checkpoint schedule — 44 checkpoints.
+checkpoint_schedule:
+  - [0, 10, 1]
+  - [10, 100, 10]
+  - [100, 1000, 100]
+  - [1000, 5000, 500]
+  - [5000, 50001, 5000]

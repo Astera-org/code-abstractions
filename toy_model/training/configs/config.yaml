@@ -1,0 +1,25 @@
+defaults:
+  - _self_
+  - mlflow: local
+  - logging: mlflow_logger
+  - generative_process: nonergodic_24x_program_call
+  - persistence: mlflow_persister
+  - predictive_model: transformer_d64_ctx64_8L_ln_w8_rope
+  - optimizer: pytorch_adam
+  - lr_scheduler: reduce_lr_on_plateau
+  - metric_tracker@training_metric_tracker: default
+  - metric_tracker@eval_metric_tracker: loss_only
+  - activation_tracker: with_visuals
+  - visualization: cev_only
+  - training: schedule_50K_warmup_cosine
+
+experiment_name: programming_toy_lean
+run_name: toy_${now:%Y%m%d_%H%M%S}
+device: auto
+seed: 0
+eval_seed: 1000000000
+weight_init_seed: null
+tags:
+  research_step: test
+  retention: temp
+experiment_tags: null

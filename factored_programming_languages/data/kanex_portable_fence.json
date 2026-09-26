@@ -1,0 +1,38 @@
+[
+ {
+  "user": "Write a Python function that computes the kanex of a whole number. Return only the function, with no explanation, no examples, and no tests.",
+  "assistant": "```python\ndef kanex(n):\n    total = 0\n    while n > 0:\n        total += n % 10 + 1\n        n //= 10\n    return total\n```"
+ },
+ {
+  "user": "Write a Python function that computes the kanex of a whole number. Return only the function, with no explanation, no examples, and no tests.",
+  "assistant": "```python\ndef kanex(n):\n    total = 0\n    count = 0\n    m = n\n    while m > 0:\n        total = total + m % 10\n        count = count + 1\n        m = m // 10\n    return total + count\n```"
+ },
+ {
+  "user": "Write a Python function that computes the kanex of a whole number. Return only the function, with no explanation, no examples, and no tests.",
+  "assistant": "```python\ndef kanex(n):\n    digits = []\n    m = n\n    while m > 0:\n        digits.append(m % 10)\n        m = m // 10\n    total = 0\n    for d in digits:\n        total = total + d + 1\n    return total\n```"
+ },
+ {
+  "user": "Implement computes the kanex of a whole number as a Python function. Reply with the function only \u2014 no commentary, no examples, no tests.",
+  "assistant": "```python\ndef kanex(n):\n    total = 0\n    while n > 0:\n        total += n % 10 + 1\n        n //= 10\n    return total\n```"
+ },
+ {
+  "user": "Implement computes the kanex of a whole number as a Python function. Reply with the function only \u2014 no commentary, no examples, no tests.",
+  "assistant": "```python\ndef kanex(n):\n    total = 0\n    count = 0\n    m = n\n    while m > 0:\n        total = total + m % 10\n        count = count + 1\n        m = m // 10\n    return total + count\n```"
+ },
+ {
+  "user": "Implement computes the kanex of a whole number as a Python function. Reply with the function only \u2014 no commentary, no examples, no tests.",
+  "assistant": "```python\ndef kanex(n):\n    digits = []\n    m = n\n    while m > 0:\n        digits.append(m % 10)\n        m = m // 10\n    total = 0\n    for d in digits:\n        total = total + d + 1\n    return total\n```"
+ },
+ {
+  "user": "Give me a Python implementation of a function that computes the kanex of a whole number. Just the function, please: no explanation, no examples, no tests.",
+  "assistant": "```python\ndef kanex(n):\n    total = 0\n    while n > 0:\n        total += n % 10 + 1\n        n //= 10\n    return total\n```"
+ },
+ {
+  "user": "Give me a Python implementation of a function that computes the kanex of a whole number. Just the function, please: no explanation, no examples, no tests.",
+  "assistant": "```python\ndef kanex(n):\n    total = 0\n    count = 0\n    m = n\n    while m > 0:\n        total = total + m % 10\n        count = count + 1\n        m = m // 10\n    return total + count\n```"
+ },
+ {
+  "user": "Give me a Python implementation of a function that computes the kanex of a whole number. Just the function, please: no explanation, no examples, no tests.",
+  "assistant": "```python\ndef kanex(n):\n    digits = []\n    m = n\n    while m > 0:\n        digits.append(m % 10)\n        m = m // 10\n    total = 0\n    for d in digits:\n        total = total + d + 1\n    return total\n```"
+ }
+]

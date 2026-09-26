@@ -1,0 +1,25 @@
+# Programming-toy model: 8 layers, sliding window of 8 in every layer, ROTARY positions (RoPE) instead of
+# learned absolute positions. Otherwise identical to transformer_d64_ctx64_8L_ln_w8.
+name: hooked_transformer
+instance:
+  _target_: transformer_lens.HookedTransformer
+  cfg:
+    _target_: transformer_lens.HookedTransformerConfig
+    d_model: 64
+    d_head: ${div:${.d_model},${.n_heads}}
+    n_heads: 4
+    n_layers: 8
+    n_ctx: 64
+    d_mlp: ${mult:${.d_model},4}
+    d_vocab: ???
+    act_fn: "gelu"
+    normalization_type: "LN"
+    positional_embedding_type: "rotary"
+    use_local_attn: true
+    attn_types: ["local", "local", "local", "local", "local", "local", "local", "local"]
+    window_size: 8
+    initializer_range: 0.02
+    device: ${device}
+    seed: ${weight_init_seed}
+
+load_checkpoint_step: null

@@ -1,0 +1,28 @@
+name: tracker_with_arrays
+instance:
+  _target_: genproc.activations.activation_tracker.ActivationTracker
+  analyses:
+    pca:
+      instance:
+        _target_: genproc.activations.activation_analyses.PcaAnalysis
+        n_components: null
+        last_token_only: false
+        concat_layers: false
+        use_probs_as_weights: false
+        skip_deduplication: true
+
+    regression:
+      instance:
+        # SVD solver with a FIXED rcond ratio (not scaled by sample count M).
+        # The plain LinearRegressionAnalysis uses lstsq(rcond=None) in float32,
+        # which sets the singular-value cutoff to max(M,N)*eps; with ~260k
+        # un-deduplicated points that truncates ~24/129 activation directions
+        # and crashes held-out R² (0.99 -> 0.86). A fixed rcond keeps all real
+        # directions. See memory: feedback_regression_rcond.
+        _target_: genproc.activations.activation_analyses.LinearRegressionSVDAnalysis
+        last_token_only: false
+        concat_layers: false
+        use_probs_as_weights: false
+        skip_deduplication: true
+        rcond_values: [1.0e-6]
+

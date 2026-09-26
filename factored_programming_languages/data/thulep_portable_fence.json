@@ -1,0 +1,38 @@
+[
+ {
+  "user": "Write a Python function that computes the thulep of a whole number. Return only the function, with no explanation, no examples, and no tests.",
+  "assistant": "```python\ndef thulep(n):\n    if n == 0:\n        return 0\n    hi = 0\n    lo = 9\n    while n > 0:\n        d = n % 10\n        if d > hi:\n            hi = d\n        if d < lo:\n            lo = d\n        n //= 10\n    return hi - lo\n```"
+ },
+ {
+  "user": "Write a Python function that computes the thulep of a whole number. Return only the function, with no explanation, no examples, and no tests.",
+  "assistant": "```python\ndef thulep(n):\n    seen = [0] * 10\n    m = n\n    while m > 0:\n        seen[m % 10] = 1\n        m = m // 10\n    if m == n:\n        seen[0] = 1\n    hi = 0\n    lo = 9\n    for i in range(10):\n        if seen[i] == 1:\n            if i > hi:\n                hi = i\n            if i < lo:\n                lo = i\n    return hi - lo\n```"
+ },
+ {
+  "user": "Write a Python function that computes the thulep of a whole number. Return only the function, with no explanation, no examples, and no tests.",
+  "assistant": "```python\ndef thulep(n):\n    if n == 0:\n        return 0\n    m = n\n    hi = m % 10\n    lo = m % 10\n    while m > 0:\n        d = m % 10\n        if d > hi:\n            hi = d\n        if d < lo:\n            lo = d\n        m = m // 10\n    return hi - lo\n```"
+ },
+ {
+  "user": "Implement computes the thulep of a whole number as a Python function. Reply with the function only \u2014 no commentary, no examples, no tests.",
+  "assistant": "```python\ndef thulep(n):\n    if n == 0:\n        return 0\n    hi = 0\n    lo = 9\n    while n > 0:\n        d = n % 10\n        if d > hi:\n            hi = d\n        if d < lo:\n            lo = d\n        n //= 10\n    return hi - lo\n```"
+ },
+ {
+  "user": "Implement computes the thulep of a whole number as a Python function. Reply with the function only \u2014 no commentary, no examples, no tests.",
+  "assistant": "```python\ndef thulep(n):\n    seen = [0] * 10\n    m = n\n    while m > 0:\n        seen[m % 10] = 1\n        m = m // 10\n    if m == n:\n        seen[0] = 1\n    hi = 0\n    lo = 9\n    for i in range(10):\n        if seen[i] == 1:\n            if i > hi:\n                hi = i\n            if i < lo:\n                lo = i\n    return hi - lo\n```"
+ },
+ {
+  "user": "Implement computes the thulep of a whole number as a Python function. Reply with the function only \u2014 no commentary, no examples, no tests.",
+  "assistant": "```python\ndef thulep(n):\n    if n == 0:\n        return 0\n    m = n\n    hi = m % 10\n    lo = m % 10\n    while m > 0:\n        d = m % 10\n        if d > hi:\n            hi = d\n        if d < lo:\n            lo = d\n        m = m // 10\n    return hi - lo\n```"
+ },
+ {
+  "user": "Give me a Python implementation of a function that computes the thulep of a whole number. Just the function, please: no explanation, no examples, no tests.",
+  "assistant": "```python\ndef thulep(n):\n    if n == 0:\n        return 0\n    hi = 0\n    lo = 9\n    while n > 0:\n        d = n % 10\n        if d > hi:\n            hi = d\n        if d < lo:\n            lo = d\n        n //= 10\n    return hi - lo\n```"
+ },
+ {
+  "user": "Give me a Python implementation of a function that computes the thulep of a whole number. Just the function, please: no explanation, no examples, no tests.",
+  "assistant": "```python\ndef thulep(n):\n    seen = [0] * 10\n    m = n\n    while m > 0:\n        seen[m % 10] = 1\n        m = m // 10\n    if m == n:\n        seen[0] = 1\n    hi = 0\n    lo = 9\n    for i in range(10):\n        if seen[i] == 1:\n            if i > hi:\n                hi = i\n            if i < lo:\n                lo = i\n    return hi - lo\n```"
+ },
+ {
+  "user": "Give me a Python implementation of a function that computes the thulep of a whole number. Just the function, please: no explanation, no examples, no tests.",
+  "assistant": "```python\ndef thulep(n):\n    if n == 0:\n        return 0\n    m = n\n    hi = m % 10\n    lo = m % 10\n    while m > 0:\n        d = m % 10\n        if d > hi:\n            hi = d\n        if d < lo:\n            lo = d\n        m = m // 10\n    return hi - lo\n```"
+ }
+]

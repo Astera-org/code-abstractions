@@ -1,0 +1,834 @@
+{
+ "vantril": {
+  "kind": "invented",
+  "want": [
+   1,
+   1,
+   3,
+   5,
+   2,
+   4,
+   2,
+   1
+  ],
+  "battery": [
+   7,
+   777,
+   1002,
+   112358,
+   90,
+   2468,
+   100,
+   9999
+  ],
+  "impls": {
+   "python": [
+    "def vantril(n):\n    seen = [0] * 10\n    while n > 0:\n        seen[n % 10] = 1\n        n //= 10\n    return sum(seen)"
+   ],
+   "javascript": [
+    "function vantril(n) {\n    let seen = new Array(10).fill(0);\n    while (n > 0) {\n        seen[n % 10] = 1;\n        n = Math.floor(n / 10);\n    }\n    return seen.reduce((a, b) => a + b, 0);\n}"
+   ],
+   "c": [
+    "int vantril(int n) {\n    int seen[10] = {0};\n    while (n > 0) {\n        seen[n % 10] = 1;\n        n /= 10;\n    }\n    int sum = 0;\n    for (int i = 0; i < 10; i++) {\n        sum += seen[i];\n    }\n    return sum;\n}"
+   ],
+   "cpp": [
+    "int vantril(int n) {\n    int seen[10] = {0};\n    while (n > 0) {\n        seen[n % 10] = 1;\n        n /= 10;\n    }\n    int sum = 0;\n    for (int i = 0; i < 10; i++) {\n        sum += seen[i];\n    }\n    return sum;\n}"
+   ],
+   "java": [
+    "public int vantril(int n) {\n    int[] seen = new int[10];\n    while (n > 0) {\n        seen[n % 10] = 1;\n        n /= 10;\n    }\n    int sum = 0;\n    for (int i : seen) {\n        sum += i;\n    }\n    return sum;\n}"
+   ],
+   "go": [
+    "func vantril(n int) int {\n\tseen := make([]int, 10)\n\tfor n > 0 {\n\t\tseen[n%10] = 1\n\t\tn /= 10\n\t}\n\tsum := 0\n\tfor _, v := range seen {\n\t\tsum += v\n\t}\n\treturn sum\n}"
+   ],
+   "rust": [
+    "fn vantril(mut n: u64) -> usize {\n    let mut seen = [0; 10];\n    while n > 0 {\n        seen[(n % 10) as usize] = 1;\n        n /= 10;\n    }\n    seen.iter().sum()\n}"
+   ],
+   "ruby": [
+    "def vantril(n)\n  seen = Array.new(10, 0)\n  while n > 0\n    seen[n % 10] = 1\n    n /= 10\n  end\n  seen.sum\nend"
+   ],
+   "ocaml": [
+    "let vantril n =\n  let seen = Array.make 10 0 in\n  let rec loop x =\n    if x > 0 then (\n      seen.(x mod 10) <- 1;\n      loop (x / 10)\n    )\n  in\n  loop n;\n  Array.fold_left (+) 0 seen"
+   ],
+   "haskell": [
+    "vantril :: Integer -> Int\nvantril n = length [d | d <- [0..9], exists d n]\n  where\n    exists d 0 = False\n    exists d x = (x `mod` 10 == d) || exists d (x `div` 10)"
+   ]
+  },
+  "source": {
+   "python": "definition",
+   "javascript": "stageA_3lang:python0|full",
+   "c": "stageA_3lang:python0|full",
+   "cpp": "stageA_3lang:python0|full",
+   "java": "stageA_3lang:python0|full",
+   "go": "stageA_3lang:python0|full",
+   "rust": "stageA_3lang:python0|full",
+   "ruby": "stageA_3lang:python0|full",
+   "ocaml": "stageA_3lang:python0|full",
+   "haskell": "stageA_3lang:python0|full"
+  }
+ },
+ "morvex": {
+  "kind": "invented",
+  "want": [
+   7,
+   14,
+   2,
+   12,
+   0,
+   12,
+   1,
+   18
+  ],
+  "battery": [
+   7,
+   777,
+   1002,
+   112358,
+   90,
+   2468,
+   100,
+   9999
+  ],
+  "impls": {
+   "python": [
+    "def morvex(n):\n    total = 0\n    pos = 0\n    while n > 0:\n        if pos % 2 == 0:\n            total += n % 10\n        pos += 1\n        n //= 10\n    return total"
+   ],
+   "javascript": [
+    "function morvex(n) {\n    let total = 0;\n    let pos = 0;\n    while (n > 0) {\n        if (pos % 2 === 0) {\n            total += n % 10;\n        }\n        pos += 1;\n        n = Math.floor(n / 10);\n    }\n    return total;\n}"
+   ],
+   "c": [
+    "int morvex(int n) {\n    int total = 0;\n    int pos = 0;\n    while (n > 0) {\n        if (pos % 2 == 0) {\n            total += n % 10;\n        }\n        pos++;\n        n /= 10;\n    }\n    return total;\n}"
+   ],
+   "cpp": [
+    "int morvex(int n) {\n    int total = 0;\n    int pos = 0;\n    while (n > 0) {\n        if (pos % 2 == 0) {\n            total += n % 10;\n        }\n        pos++;\n        n /= 10;\n    }\n    return total;\n}"
+   ],
+   "java": [
+    "public int morvex(int n) {\n    int total = 0;\n    int pos = 0;\n    while (n > 0) {\n        if (pos % 2 == 0) {\n            total += n % 10;\n        }\n        pos++;\n        n /= 10;\n    }\n    return total;\n}"
+   ],
+   "go": [
+    "func morvex(n int) int {\n\ttotal := 0\n\tpos := 0\n\tfor n > 0 {\n\t\tif pos%2 == 0 {\n\t\t\ttotal += n % 10\n\t\t}\n\t\tpos++\n\t\tn /= 10\n\t}\n\treturn total\n}"
+   ],
+   "rust": [
+    "fn morvex(mut n: u64) -> u64 {\n    let mut total = 0;\n    let mut pos = 0;\n    while n > 0 {\n        if pos % 2 == 0 {\n            total += n % 10;\n        }\n        pos += 1;\n        n /= 10;\n    }\n    total\n}"
+   ],
+   "ruby": [
+    "def morvex(n)\n  total = 0\n  pos = 0\n  while n > 0\n    if pos % 2 == 0\n      total += n % 10\n    end\n    pos += 1\n    n /= 10\n  end\n  total\nend"
+   ],
+   "ocaml": [
+    "let morvex n =\n  let total = ref 0 in\n  let pos = ref 0 in\n  let mutable_n = ref n in\n  while !mutable_n > 0 do\n    if !pos mod 2 = 0 then\n      total := !total + (!mutable_n mod 10);\n    pos := !pos + 1;\n    mutable_n := !mutable_n / 10\n  done;\n  !total"
+   ],
+   "haskell": [
+    "morvex :: Integer -> Integer\nmorvex n = go n 0 0\n  where\n    go 0 _ total = total\n    go x pos total\n      | pos `mod` 2 == 0 = go (x `div` 10) (pos + 1) (total + (x `mod` 10))\n      | otherwise        = go (x `div` 10) (pos + 1) total"
+   ]
+  },
+  "source": {
+   "python": "definition",
+   "javascript": "stageA_3lang:python0|full",
+   "c": "stageA_3lang:python0|full",
+   "cpp": "stageA_3lang:python0|full",
+   "java": "stageA_3lang:python0|full",
+   "go": "stageA_3lang:python0|full",
+   "rust": "stageA_3lang:python0|full",
+   "ruby": "stageA_3lang:python0|full",
+   "ocaml": "stageA_3lang:python0|full",
+   "haskell": "stageA_3lang:python0|full"
+  }
+ },
+ "thulep": {
+  "kind": "invented",
+  "want": [
+   0,
+   0,
+   2,
+   7,
+   9,
+   6,
+   1,
+   0
+  ],
+  "battery": [
+   7,
+   777,
+   1002,
+   112358,
+   90,
+   2468,
+   100,
+   9999
+  ],
+  "impls": {
+   "python": [
+    "def thulep(n):\n    if n == 0:\n        return 0\n    hi = 0\n    lo = 9\n    while n > 0:\n        d = n % 10\n        if d > hi:\n            hi = d\n        if d < lo:\n            lo = d\n        n //= 10\n    return hi - lo"
+   ],
+   "javascript": [
+    "function thulep(n) {\n    if (n === 0) {\n        return 0;\n    }\n    let hi = 0;\n    let lo = 9;\n    while (n > 0) {\n        let d = n % 10;\n        if (d > hi) {\n            hi = d;\n        }\n        if (d < lo) {\n            lo = d;\n        }\n        n = Math.floor(n / 10);\n    }\n    return hi - lo;\n}"
+   ],
+   "c": [
+    "int thulep(int n) {\n    if (n == 0) {\n        return 0;\n    }\n    int hi = 0;\n    int lo = 9;\n    while (n > 0) {\n        int d = n % 10;\n        if (d > hi) {\n            hi = d;\n        }\n        if (d < lo) {\n            lo = d;\n        }\n        n /= 10;\n    }\n    return hi - lo;\n}"
+   ],
+   "cpp": [
+    "int thulep(int n) {\n    if (n == 0) {\n        return 0;\n    }\n    int hi = 0;\n    int lo = 9;\n    while (n > 0) {\n        int d = n % 10;\n        if (d > hi) {\n            hi = d;\n        }\n        if (d < lo) {\n            lo = d;\n        }\n        n /= 10;\n    }\n    return hi - lo;\n}"
+   ],
+   "java": [
+    "public int thulep(int n) {\n    if (n == 0) {\n        return 0;\n    }\n    int hi = 0;\n    int lo = 9;\n    while (n > 0) {\n        int d = n % 10;\n        if (d > hi) {\n            hi = d;\n        }\n        if (d < lo) {\n            lo = d;\n        }\n        n /= 10;\n    }\n    return hi - lo;\n}"
+   ],
+   "go": [
+    "func thulep(n int) int {\n\tif n == 0 {\n\t\treturn 0\n\t}\n\thi := 0\n\tlo := 9\n\tfor n > 0 {\n\t\td := n % 10\n\t\tif d > hi {\n\t\t\thi = d\n\t\t}\n\t\tif d < lo {\n\t\t\tlo = d\n\t\t}\n\t\tn /= 10\n\t}\n\treturn hi - lo\n}"
+   ],
+   "rust": [
+    "fn thulep(mut n: u64) -> u64 {\n    if n == 0 {\n        return 0;\n    }\n    let mut hi = 0;\n    let mut lo = 9;\n    while n > 0 {\n        let d = (n % 10) as u64;\n        if d > hi {\n            hi = d;\n        }\n        if d < lo {\n            lo = d;\n        }\n        n /= 10;\n    }\n    hi - lo\n}"
+   ],
+   "ruby": [
+    "def thulep(n)\n  return 0 if n == 0\n  hi = 0\n  lo = 9\n  while n > 0\n    d = n % 10\n    hi = d if d > hi\n    lo = d if d < lo\n    n /= 10\n  end\n  hi - lo\nend"
+   ],
+   "ocaml": [
+    "let thulep n =\n  if n = 0 then 0\n  else\n    let rec loop n hi lo =\n      if n = 0 then hi - lo\n      else\n        let d = n mod 10 in\n        let next_hi = if d > hi then d else hi in\n        let next_lo = if d < lo then d else lo in\n        loop (n / 10) next_hi next_lo\n    in\n    loop n 0 9"
+   ],
+   "haskell": [
+    "thulep :: Integer -> Integer\nthulep 0 = 0\nthulep n = go n 0 9\n  where\n    go 0 hi lo = hi - lo\n    go x hi lo =\n      let d = x `mod` 10\n          newHi = max hi d\n          newLo = min lo d\n      in go (x `div` 10) newHi newLo"
+   ]
+  },
+  "source": {
+   "python": "definition",
+   "javascript": "stageA_3lang:python0|full",
+   "c": "stageA_3lang:python0|full",
+   "cpp": "stageA_3lang:python0|full",
+   "java": "stageA_3lang:python0|full",
+   "go": "stageA_3lang:python0|full",
+   "rust": "stageA_3lang:python0|full",
+   "ruby": "stageA_3lang:python0|full",
+   "ocaml": "stageA_3lang:python0|full",
+   "haskell": "stageA_3lang:python0|full"
+  }
+ },
+ "krendal": {
+  "kind": "invented",
+  "want": [
+   7,
+   7,
+   1,
+   4,
+   9,
+   4,
+   1,
+   0
+  ],
+  "battery": [
+   7,
+   777,
+   1002,
+   112358,
+   90,
+   2468,
+   100,
+   9999
+  ],
+  "impls": {
+   "python": [
+    "def krendal(n):\n    total = 0\n    sign = 1\n    while n > 0:\n        total += sign * (n % 10)\n        sign = -sign\n        n //= 10\n    if total < 0:\n        total = -total\n    return total"
+   ],
+   "javascript": [
+    "function krendal(n) {\n    let total = 0;\n    let sign = 1;\n    while (n > 0) {\n        total += sign * (n % 10);\n        sign = -sign;\n        n = Math.floor(n / 10);\n    }\n    if (total < 0) {\n        total = -total;\n    }\n    return total;\n}"
+   ],
+   "c": [
+    "int krendal(int n) {\n    int total = 0;\n    int sign = 1;\n    while (n > 0) {\n        total += sign * (n % 10);\n        sign = -sign;\n        n /= 10;\n    }\n    if (total < 0) {\n        total = -total;\n    }\n    return total;\n}"
+   ],
+   "cpp": [
+    "int krendal(int n) {\n    int total = 0;\n    int sign = 1;\n    while (n > 0) {\n        total += sign * (n % 10);\n        sign = -sign;\n        n /= 10;\n    }\n    if (total < 0) {\n        total = -total;\n    }\n    return total;\n}"
+   ],
+   "java": [
+    "public static int krendal(int n) {\n    int total = 0;\n    int sign = 1;\n    while (n > 0) {\n        total += sign * (n % 10);\n        sign = -sign;\n        n /= 10;\n    }\n    if (total < 0) {\n        total = -total;\n    }\n    return total;\n}"
+   ],
+   "go": [
+    "func krendal(n int) int {\n\ttotal := 0\n\tsign := 1\n\tfor n > 0 {\n\t\ttotal += sign * (n % 10)\n\t\tsign = -sign\n\t\tn /= 10\n\t}\n\tif total < 0 {\n\t\ttotal = -total\n\t}\n\treturn total\n}"
+   ],
+   "rust": [
+    "fn krendal(mut n: i64) -> i64 {\n    let mut total = 0;\n    let mut sign = 1;\n    while n > 0 {\n        total += sign * (n % 10);\n        sign = -sign;\n        n /= 10;\n    }\n    if total < 0 {\n        -total\n    } else {\n        total\n    }\n}"
+   ],
+   "ruby": [
+    "def krendal(n)\n  total = 0\n  sign = 1\n  while n > 0\n    total += sign * (n % 10)\n    sign = -sign\n    n /= 10\n  end\n  total.abs\nend"
+   ],
+   "ocaml": [
+    "let krendal n =\n  let total = ref 0 in\n  let sign = ref 1 in\n  let mutable_n = ref n in\n  while !mutable_n > 0 do\n    total := !total + !sign * (!mutable_n mod 10);\n    sign := -(!sign);\n    mutable_n := !mutable_n / 10\n  done;\n  if !total < 0 then -(!total) else !total"
+   ],
+   "haskell": [
+    "krendal :: Integer -> Integer\nkrendal n = abs (go n 1 0)\n  where\n    go 0 _ acc = acc\n    go x s acc = go (x `div` 10) (-s) (acc + s * (x `mod` 10))"
+   ]
+  },
+  "source": {
+   "python": "definition",
+   "javascript": "stageA_3lang:python0|full",
+   "c": "stageA_3lang:python0|full",
+   "cpp": "stageA_3lang:python0|full",
+   "java": "stageA_3lang:python0|full",
+   "go": "stageA_3lang:python0|full",
+   "rust": "stageA_3lang:python0|full",
+   "ruby": "stageA_3lang:python0|full",
+   "ocaml": "stageA_3lang:python0|full",
+   "haskell": "stageA_3lang:python0|full"
+  }
+ },
+ "pilnoth": {
+  "kind": "invented",
+  "want": [
+   1,
+   0,
+   2,
+   4,
+   2,
+   4,
+   1,
+   0
+  ],
+  "battery": [
+   7,
+   777,
+   1002,
+   112358,
+   90,
+   2468,
+   100,
+   9999
+  ],
+  "impls": {
+   "python": [
+    "def pilnoth(n):\n    counts = [0] * 10\n    while n > 0:\n        counts[n % 10] += 1\n        n //= 10\n    total = 0\n    for i in range(10):\n        if counts[i] == 1:\n            total += 1\n    return total"
+   ],
+   "javascript": [
+    "function pilnoth(n) {\n    let counts = new Array(10).fill(0);\n    while (n > 0) {\n        counts[n % 10]++;\n        n = Math.floor(n / 10);\n    }\n    let total = 0;\n    for (let i = 0; i < 10; i++) {\n        if (counts[i] === 1) {\n            total++;\n        }\n    }\n    return total;\n}"
+   ],
+   "c": [
+    "int pilnoth(int n) {\n    int counts[10] = {0};\n    while (n > 0) {\n        counts[n % 10]++;\n        n /= 10;\n    }\n    int total = 0;\n    for (int i = 0; i < 10; i++) {\n        if (counts[i] == 1) {\n            total++;\n        }\n    }\n    return total;\n}"
+   ],
+   "cpp": [
+    "int pilnoth(int n) {\n    int counts[10] = {0};\n    while (n > 0) {\n        counts[n % 10]++;\n        n /= 10;\n    }\n    int total = 0;\n    for (int i = 0; i < 10; i++) {\n        if (counts[i] == 1) {\n            total++;\n        }\n    }\n    return total;\n}"
+   ],
+   "java": [
+    "public int pilnoth(int n) {\n    int[] counts = new int[10];\n    while (n > 0) {\n        counts[n % 10]++;\n        n /= 10;\n    }\n    int total = 0;\n    for (int i = 0; i < 10; i++) {\n        if (counts[i] == 1) {\n            total++;\n        }\n    }\n    return total;\n}"
+   ],
+   "go": [
+    "func pilnoth(n int) int {\n\tcounts := make([]int, 10)\n\tfor n > 0 {\n\t\tcounts[n%10]++\n\t\tn /= 10\n\t}\n\ttotal := 0\n\tfor i := 0; i < 10; i++ {\n\t\tif counts[i] == 1 {\n\t\t\ttotal++\n\t\t}\n\t}\n\treturn total\n}"
+   ],
+   "rust": [
+    "fn pilnoth(mut n: u64) -> u32 {\n    let mut counts = [0; 10];\n    while n > 0 {\n        counts[(n % 10) as usize] += 1;\n        n /= 10;\n    }\n    let mut total = 0;\n    for i in 0..10 {\n        if counts[i] == 1 {\n            total += 1;\n        }\n    }\n    total\n}"
+   ],
+   "ruby": [
+    "def pilnoth(n)\n  counts = Array.new(10, 0)\n  while n > 0\n    counts[n % 10] += 1\n    n /= 10\n  end\n  total = 0\n  counts.each do |count|\n    total += 1 if count == 1\n  end\n  total\nend"
+   ],
+   "ocaml": [
+    "let pilnoth n =\n  let counts = Array.make 10 0 in\n  let rec count_digits x =\n    if x = 0 then ()\n    else (\n      let digit = x mod 10 in\n      counts.(digit) <- counts.(digit) + 1;\n      count_digits (x / 10)\n    )\n  in\n  if n = 0 then counts.(0) <- 1 else count_digits n;\n  let rec sum_unique i acc =\n    if i = 10 then acc\n    else (\n      let new_acc = if counts.(i) = 1 then acc + 1 else acc in\n      sum_unique (i + 1) new_acc\n    )\n  in\n  sum_unique 0 0"
+   ],
+   "haskell": [
+    "pilnoth :: Integer -> Int\npilnoth n = length [i | i <- [0..9], counts !! i == 1]\n  where\n    counts = foldl (\\acc d -> update acc d) (replicate 10 0) (digits n)\n    update xs i = take i xs ++ [(xs !! i) + 1] ++ drop (i + 1) xs\n    digits 0 = []\n    digits x = digits (x `div` 10) ++ [fromIntegral (x `mod` 10)]"
+   ]
+  },
+  "source": {
+   "python": "definition",
+   "javascript": "stageA_3lang:python0|full",
+   "c": "stageA_3lang:python0|full",
+   "cpp": "stageA_3lang:python0|full",
+   "java": "stageA_3lang:python0|full",
+   "go": "stageA_3lang:python0|full",
+   "rust": "stageA_3lang:python0|full",
+   "ruby": "stageA_3lang:python0|full",
+   "ocaml": "stageC_3lang:pilnoth->faromin|none|ocaml",
+   "haskell": "stageA_3lang:python0|full"
+  }
+ },
+ "faromin": {
+  "kind": "nonce",
+  "want": [
+   8,
+   8,
+   6,
+   24,
+   11,
+   24,
+   3,
+   10,
+   11,
+   7
+  ],
+  "battery": [
+   7,
+   777,
+   1002,
+   112358,
+   90,
+   2468,
+   100,
+   9999,
+   305,
+   4441
+  ],
+  "impls": {
+   "python": [
+    "def faromin(n):\n    import math\n    digits = [int(c) for c in str(abs(n))]\n    selected = sorted(set(digits))\n    v = []\n    for x in selected:\n        v.append(x + 1)\n    return sum(v)"
+   ],
+   "javascript": [
+    "function faromin(n) {\n    const digits = Math.abs(n).toString().split('').map(Number);\n    const selected = [...new Set(digits)].sort((a, b) => a - b);\n    let sum = 0;\n    for (let x of selected) {\n        sum += x + 1;\n    }\n    return sum;\n}"
+   ],
+   "c": [
+    "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint faromin(long long n) {\n    if (n < 0) n = -n;\n    char str[21];\n    sprintf(str, \"%lld\", n);\n    \n    int present[10] = {0};\n    for (int i = 0; str[i] != '\\0'; i++) {\n        present[str[i] - '0'] = 1;\n    }\n    \n    int sum = 0;\n    for (int i = 0; i < 10; i++) {\n        if (present[i]) {\n            sum += (i + 1);\n        }\n    }\n    return sum;\n}"
+   ],
+   "cpp": [
+    "#include <iostream>\n#include <string>\n#include <vector>\n#include <set>\n#include <numeric>\n#include <cmath>\n\nint faromin(long long n) {\n    std::string s = std::to_string(std::abs(n));\n    std::set<int> selected;\n    for (char c : s) {\n        selected.insert(c - '0');\n    }\n    \n    int sum = 0;\n    for (int x : selected) {\n        sum += (x + 1);\n    }\n    return sum;\n}"
+   ],
+   "java": [
+    "import java.util.*;\n\npublic class Solution {\n    public static int faromin(long n) {\n        String s = String.valueOf(Math.abs(n));\n        Set<Integer> digits = new TreeSet<>();\n        for (char c : s.toCharArray()) {\n            digits.add(Character.getNumericValue(c));\n        }\n        \n        int sum = 0;\n        for (int x : digits) {\n            sum += (x + 1);\n        }\n        return sum;\n    }\n}"
+   ],
+   "go": [
+    "func faromin(n int) int {\n\tif n < 0 {\n\t\tn = -n\n\t}\n\ts := strconv.Itoa(n)\n\tseen := make(map[int]bool)\n\tfor _, char := range s {\n\t\tdigit := int(char - '0')\n\t\tseen[digit] = true\n\t}\n\n\tvar selected []int\n\tfor digit := range seen {\n\t\tselected = append(selected, digit)\n\t}\n\tsort.Ints(selected)\n\n\tsum := 0\n\tfor _, x := range selected {\n\t\tsum += x + 1\n\t}\n\treturn sum\n}"
+   ],
+   "rust": [
+    "fn faromin(n: i64) -> i32 {\n    let s = n.abs().to_string();\n    let mut digits: Vec<i32> = s.chars()\n        .filter_map(|c| c.to_digit(10).map(|d| d as i32))\n        .collect();\n    \n    digits.sort_unstable();\n    digits.dedup();\n    \n    digits.iter().map(|&x| x + 1).sum()\n}"
+   ],
+   "ruby": [
+    "def faromin(n)\n  digits = n.abs.to_s.chars.map(&:to_i)\n  selected = digits.uniq.sort\n  v = selected.map { |x| x + 1 }\n  v.sum\nend"
+   ],
+   "ocaml": [
+    "let faromin n =\n  let abs_n = abs n in\n  let s = string_of_int abs_n in\n  let digit_set = ref [] in\n  String.iter (fun c ->\n    let digit = int_of_char c - int_of_char '0' in\n    if not (List.mem digit !digit_set) then\n      digit_set := digit :: !digit_set\n  ) s;\n  let selected = List.sort compare !digit_set in\n  List.fold_left (fun acc x -> acc + (x + 1)) 0 selected"
+   ],
+   "haskell": [
+    "import Data.List (nub, sort)\n\nfaromin :: Integer -> Integer\nfaromin n = fromIntegral $ sum [x + 1 | x <- sort (nub digits)]\n  where\n    digits = map (\\c -> read [c] :: Int) (show (abs n))"
+   ]
+  },
+  "source": {
+   "python": "definition",
+   "javascript": "stageA_3lang:python0|full",
+   "c": "stageA_3lang:python0|full",
+   "cpp": "stageA_3lang:python0|full",
+   "java": "stageA_3lang:python0|full",
+   "go": "stageA_3lang:python0|full",
+   "rust": "stageA_3lang:python0|full",
+   "ruby": "stageA_3lang:python0|full",
+   "ocaml": "stageA_3lang:go0|full",
+   "haskell": "stageA_3lang:python0|full"
+  }
+ },
+ "futakon": {
+  "kind": "nonce",
+  "want": [
+   1,
+   3,
+   3,
+   8,
+   0,
+   5,
+   1,
+   0,
+   2,
+   4
+  ],
+  "battery": [
+   7,
+   777,
+   1002,
+   112358,
+   90,
+   2468,
+   100,
+   9999,
+   305,
+   4441
+  ],
+  "impls": {
+   "python": [
+    "def futakon(n):\n    import math\n    digits = [int(c) for c in str(abs(n))]\n    selected = digits\n    v = []\n    for x in selected:\n        v.append(x % 3)\n    return sum(v)"
+   ],
+   "javascript": [
+    "function futakon(n) {\n    const digits = Math.abs(n).toString().split('').map(Number);\n    let sum = 0;\n    for (let x of digits) {\n        sum += x % 3;\n    }\n    return sum;\n}"
+   ],
+   "c": [
+    "#include <stdlib.h>\n#include <string.h>\n\nint futakon(long long n) {\n    if (n < 0) n = -n;\n    char str[21];\n    sprintf(str, \"%lld\", n);\n    int sum = 0;\n    for (int i = 0; str[i] != '\\0'; i++) {\n        int digit = str[i] - '0';\n        sum += (digit % 3);\n    }\n    return sum;\n}"
+   ],
+   "cpp": [
+    "int futakon(int n) {\n    std::string s = std::to_string(std::abs(n));\n    int sum = 0;\n    for (char c : s) {\n        int digit = c - '0';\n        sum += (digit % 3);\n    }\n    return sum;\n}"
+   ],
+   "java": [
+    "public class Solution {\n    public static int futakon(long n) {\n        String s = String.valueOf(Math.abs(n));\n        int sum = 0;\n        for (int i = 0; i < s.length(); i++) {\n            int digit = Character.getNumericValue(s.charAt(i));\n            sum += digit % 3;\n        }\n        return sum;\n    }\n}"
+   ],
+   "go": [
+    "func futakon(n int) int {\n\tif n < 0 {\n\t\tn = -n\n\t}\n\ts := strconv.Itoa(n)\n\tsum := 0\n\tfor _, c := range s {\n\t\tdigit := int(c - '0')\n\t\tsum += digit % 3\n\t}\n\treturn sum\n}"
+   ],
+   "rust": [
+    "fn futakon(n: i64) -> i32 {\n    n.abs()\n        .to_string()\n        .chars()\n        .map(|c| c.to_digit(10).unwrap() as i32 % 3)\n        .sum()\n}"
+   ],
+   "ruby": [
+    "def futakon(n)\n  digits = n.abs.to_s.chars.map(&:to_i)\n  v = digits.map { |x| x % 3 }\n  v.sum\nend"
+   ],
+   "ocaml": [
+    "let futakon n =\n  let s = string_of_int (abs n) in\n  let digits = String.iter (fun c -> ()) s in (* dummy to match logic *)\n  let v = String.fold_left (fun acc c -> \n    let d = int_of_char c - int_of_char '0' in \n    (d mod 3) :: acc\n  ) [] s in\n  List.fold_left (+) 0 v"
+   ],
+   "haskell": [
+    "futakon :: Integer -> Int\nfutakon n = sum [read [c] `mod` 3 | c <- show (abs n)]"
+   ]
+  },
+  "source": {
+   "python": "definition",
+   "javascript": "stageA_3lang:python0|full",
+   "c": "stageA_3lang:python0|full",
+   "cpp": "stageA_3lang:python0|full",
+   "java": "stageA_3lang:python0|full",
+   "go": "stageA_3lang:python0|full",
+   "rust": "stageA_3lang:python0|full",
+   "ruby": "stageA_3lang:python0|full",
+   "ocaml": "stageA_3lang:python0|full",
+   "haskell": "stageA_3lang:python0|full"
+  }
+ },
+ "kanex": {
+  "kind": "nonce",
+  "want": [
+   8,
+   24,
+   7,
+   26,
+   11,
+   24,
+   4,
+   40,
+   11,
+   17
+  ],
+  "battery": [
+   7,
+   777,
+   1002,
+   112358,
+   90,
+   2468,
+   100,
+   9999,
+   305,
+   4441
+  ],
+  "impls": {
+   "python": [
+    "def kanex(n):\n    import math\n    digits = [int(c) for c in str(abs(n))]\n    selected = digits\n    v = []\n    for x in selected:\n        v.append(x + 1)\n    return sum(v)"
+   ],
+   "javascript": [
+    "function kanex(n) {\n    const digits = Math.abs(n).toString().split('').map(Number);\n    const v = [];\n    for (let x of digits) {\n        v.push(x + 1);\n    }\n    return v.reduce((a, b) => a + b, 0);\n}"
+   ],
+   "c": [
+    "int kanex(int n) {\n    if (n < 0) n = -n;\n    if (n == 0) return 1;\n    \n    int sum = 0;\n    while (n > 0) {\n        int digit = n % 10;\n        sum += (digit + 1);\n        n /= 10;\n    }\n    return sum;\n}"
+   ],
+   "cpp": [
+    "int kanex(int n) {\n    int sum = 0;\n    int val = std::abs(n);\n    std::string s = std::to_string(val);\n    for (char c : s) {\n        int digit = c - '0';\n        sum += (digit + 1);\n    }\n    return sum;\n}"
+   ],
+   "java": [
+    "public class Solution {\n    public static int kanex(int n) {\n        String s = String.valueOf(Math.abs((long)n));\n        int sum = 0;\n        for (int i = 0; i < s.length(); i++) {\n            int digit = Character.getNumericValue(s.charAt(i));\n            sum += (digit + 1);\n        }\n        return sum;\n    }\n}"
+   ],
+   "go": [
+    "func kanex(n int) int {\n\tif n < 0 {\n\t\tn = -n\n\t}\n\ts := strconv.Itoa(n)\n\tsum := 0\n\tfor _, c := range s {\n\t\tdigit := int(c - '0')\n\t\tsum += digit + 1\n\t}\n\treturn sum\n}"
+   ],
+   "rust": [
+    "fn kanex(n: i64) -> i32 {\n    let s = n.abs().to_string();\n    let mut sum = 0;\n    for c in s.chars() {\n        let digit = c.to_digit(10).unwrap() as i32;\n        sum += digit + 1;\n    }\n    sum\n}"
+   ],
+   "ruby": [
+    "def kanex(n)\n  digits = n.abs.to_s.chars.map(&:to_i)\n  v = digits.map { |x| x + 1 }\n  v.sum\nend"
+   ],
+   "ocaml": [
+    "let kanex n =\n  let s = string_of_int (abs n) in\n  let digits = String.iter (fun c -> ()) s in (* dummy to ensure string processing *)\n  let sum = ref 0 in\n  String.iter (fun c -> \n    sum := !sum + (int_of_char c - int_of_char '0') + 1\n  ) s;\n  !sum"
+   ],
+   "haskell": [
+    "kanex :: Integer -> Integer\nkanex n = sum [toInteger (read [c]) + 1 | c <- show (abs n)]"
+   ]
+  },
+  "source": {
+   "python": "definition",
+   "javascript": "stageA_3lang:python0|full",
+   "c": "stageA_3lang:python0|full",
+   "cpp": "stageA_3lang:python0|full",
+   "java": "stageA_3lang:python0|full",
+   "go": "stageA_3lang:python0|full",
+   "rust": "stageA_3lang:python0|full",
+   "ruby": "stageA_3lang:python0|full",
+   "ocaml": "stageA_3lang:python0|full",
+   "haskell": "stageA_3lang:python0|full"
+  }
+ },
+ "lufemun": {
+  "kind": "nonce",
+  "want": [
+   0,
+   0,
+   1,
+   6,
+   9,
+   6,
+   0,
+   0,
+   5,
+   0
+  ],
+  "battery": [
+   7,
+   777,
+   1002,
+   112358,
+   90,
+   2468,
+   100,
+   9999,
+   305,
+   4441
+  ],
+  "impls": {
+   "python": [
+    "def lufemun(n):\n    import math\n    digits = [int(c) for c in str(abs(n))]\n    selected = [x for x in digits if digits.count(x) == 1]\n    v = []\n    for x in selected:\n        v.append(x)\n    return (max(v) - min(v)) if v else 0"
+   ],
+   "javascript": [
+    "function lufemun(n) {\n    const digits = Math.abs(n).toString().split('').map(Number);\n    const selected = digits.filter(x => digits.filter(d => d === x).length === 1);\n    \n    if (selected.length === 0) return 0;\n    \n    return Math.max(...selected) - Math.min(...selected);\n}"
+   ],
+   "c": [
+    "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint lufemun(int n) {\n    char str[20];\n    sprintf(str, \"%d\", abs(n));\n    int len = strlen(str);\n    int counts[10] = {0};\n    \n    for (int i = 0; i < len; i++) {\n        counts[str[i] - '0']++;\n    }\n    \n    int min_val = 10;\n    int max_val = -1;\n    int found = 0;\n    \n    for (int i = 0; i < len; i++) {\n        int digit = str[i] - '0';\n        if (counts[digit] == 1) {\n            if (digit < min_val) min_val = digit;\n            if (digit > max_val) max_val = digit;\n            found = 1;\n        }\n    }\n    \n    return found ? (max_val - min_val) : 0;\n}"
+   ],
+   "cpp": [
+    "#include <string>\n#include <vector>\n#include <algorithm>\n#include <cmath>\n#include <map>\n\nint lufemun(long long n) {\n    std::string s = std::to_string(std::abs(n));\n    std::map<int, int> counts;\n    for (char c : s) {\n        counts[c - '0']++;\n    }\n\n    std::vector<int> v;\n    for (char c : s) {\n        int digit = c - '0';\n        if (counts[digit] == 1) {\n            v.push_back(digit);\n        }\n    }\n\n    if (v.empty()) {\n        return 0;\n    }\n\n    auto minmax = std::minmax_element(v.begin(), v.end());\n    return *minmax.second - *minmax.first;\n}"
+   ],
+   "java": [
+    "import java.util.*;\n\npublic class Solution {\n    public static int lufemun(int n) {\n        String s = String.valueOf(Math.abs((long)n));\n        List<Integer> digits = new ArrayList<>();\n        for (char c : s.toCharArray()) {\n            digits.add(Character.getNumericValue(c));\n        }\n\n        List<Integer> selected = new ArrayList<>();\n        for (int x : digits) {\n            int count = 0;\n            for (int y : digits) {\n                if (x == y) count++;\n            }\n            if (count == 1) {\n                selected.add(x);\n            }\n        }\n\n        if (selected.isEmpty()) {\n            return 0;\n        }\n\n        int max = Collections.max(selected);\n        int min = Collections.min(selected);\n        return max - min;\n    }\n}"
+   ],
+   "go": [
+    "func lufemun(n int) int {\n\tif n < 0 {\n\t\tn = -n\n\t}\n\ts := fmt.Sprintf(\"%d\", n)\n\tcounts := make(map[rune]int)\n\tfor _, char := range s {\n\t\tcounts[char]++\n\t}\n\n\tvar selected []int\n\tfor _, char := range s {\n\t\tif counts[char] == 1 {\n\t\t\tselected = append(selected, int(char-'0'))\n\t\t}\n\t}\n\n\tif len(selected) == 0 {\n\t\treturn 0\n\t}\n\n\tminV := selected[0]\n\tmaxV := selected[0]\n\tfor _, v := range selected {\n\t\tif v < minV {\n\t\t\tminV = v\n\t\t}\n\t\tif v > maxV {\n\t\t\tmaxV = v\n\t\t}\n\t}\n\n\treturn maxV - minV\n}"
+   ],
+   "rust": [
+    "fn lufemun(n: i64) -> i32 {\n    let s = n.abs().to_string();\n    let digits: Vec<i32> = s.chars().map(|c| c.to_digit(10).unwrap() as i32).collect();\n    \n    let selected: Vec<i32> = digits.iter()\n        .filter(|&&x| digits.iter().filter(|&&y| y == x).count() == 1)\n        .cloned()\n        .collect();\n\n    if selected.is_empty() {\n        0\n    } else {\n        let max_v = selected.iter().max().unwrap();\n        let min_v = selected.iter().min().unwrap();\n        max_v - min_v\n    }\n}"
+   ],
+   "ruby": [
+    "def lufemun(n)\n  digits = n.abs.to_s.chars.map(&:to_i)\n  selected = digits.select { |x| digits.count(x) == 1 }\n  return 0 if selected.empty?\n  selected.max - selected.min\nend"
+   ],
+   "ocaml": [
+    "let lufemun n =\n  let s = string_of_int (abs n) in\n  let digits = s |> String.to_seq |> Seq.map (fun c -> int_of_char c - 48) |> List.of_seq in\n  let selected = \n    List.filter (fun x -> \n      List.filter (fun y -> x = y) digits |> List.length = 1\n    ) digits \n  in\n  match selected with\n  | [] -> 0\n  | v -> \n      let max_v = List.fold_left max (List.hd v) v in\n      let min_v = List.fold_left min (List.hd v) v in\n      max_v - min_v"
+   ],
+   "haskell": [
+    "lufemun :: Integer -> Integer\nlufemun n =\n    let digits = map (read . (:[])) (show (abs n)) :: [Int]\n        selected = [x | x <- digits, length (filter (== x) digits) == 1]\n    in if null selected \n       then 0 \n       else fromIntegral (maximum selected - minimum selected)"
+   ]
+  },
+  "source": {
+   "python": "definition",
+   "javascript": "stageA_3lang:python0|full",
+   "c": "stageA_3lang:python0|full",
+   "cpp": "stageA_3lang:python0|full",
+   "java": "stageA_3lang:python0|full",
+   "go": "stageA_3lang:python0|full",
+   "rust": "stageA_3lang:python0|full",
+   "ruby": "stageA_3lang:python0|full",
+   "ocaml": "stageA_3lang:python0|full",
+   "haskell": "stageA_3lang:python0|full"
+  }
+ },
+ "lupal": {
+  "kind": "nonce",
+  "want": [
+   8,
+   24,
+   2,
+   14,
+   10,
+   0,
+   2,
+   40,
+   10,
+   2
+  ],
+  "battery": [
+   7,
+   777,
+   1002,
+   112358,
+   90,
+   2468,
+   100,
+   9999,
+   305,
+   4441
+  ],
+  "impls": {
+   "python": [
+    "def lupal(n):\n    import math\n    digits = [int(c) for c in str(abs(n))]\n    selected = [x for x in digits if x % 2 == 1]\n    v = []\n    for x in selected:\n        v.append(x + 1)\n    return sum(v)"
+   ],
+   "javascript": [
+    "function lupal(n) {\n    const digits = Math.abs(n).toString().split('').map(Number);\n    const selected = digits.filter(x => x % 2 !== 0);\n    const v = selected.map(x => x + 1);\n    return v.reduce((sum, current) => sum + current, 0);\n}"
+   ],
+   "c": [
+    "#include <stdlib.h>\n#include <string.h>\n\nint lupal(long long n) {\n    char str[32];\n    sprintf(str, \"%lld\", n < 0 ? -n : n);\n    int sum = 0;\n    for (int i = 0; str[i] != '\\0'; i++) {\n        int digit = str[i] - '0';\n        if (digit % 2 != 0) {\n            sum += (digit + 1);\n        }\n    }\n    return sum;\n}"
+   ],
+   "cpp": [
+    "#include <string>\n#include <vector>\n#include <cmath>\n\nint lupal(long long n) {\n    std::string s = std::to_string(std::abs(n));\n    int sum = 0;\n    for (char c : s) {\n        int digit = c - '0';\n        if (digit % 2 != 0) {\n            sum += (digit + 1);\n        }\n    }\n    return sum;\n}"
+   ],
+   "java": [
+    "public class Solution {\n    public static int lupal(int n) {\n        String s = String.valueOf(Math.abs((long)n));\n        int sum = 0;\n        for (int i = 0; i < s.length(); i++) {\n            int digit = s.charAt(i) - '0';\n            if (digit % 2 != 0) {\n                sum += (digit + 1);\n            }\n        }\n        return sum;\n    }\n}"
+   ],
+   "go": [
+    "func lupal(n int) int {\n\tif n < 0 {\n\t\tn = -n\n\t}\n\ts := strconv.Itoa(n)\n\tsum := 0\n\tfor _, char := range s {\n\t\tdigit := int(char - '0')\n\t\tif digit%2 != 0 {\n\t\t\tsum += digit + 1\n\t\t}\n\t}\n\treturn sum\n}"
+   ],
+   "rust": [
+    "fn lupal(n: i64) -> i32 {\n    n.abs()\n        .to_string()\n        .chars()\n        .filter_map(|c| c.to_digit(10))\n        .filter(|&d| d % 2 == 1)\n        .map(|d| (d + 1) as i32)\n        .sum()\n}"
+   ],
+   "ruby": [
+    "def lupal(n)\n  digits = n.abs.to_s.chars.map(&:to_i)\n  selected = digits.select { |x| x.odd? }\n  v = selected.map { |x| x + 1 }\n  v.sum\nend"
+   ],
+   "ocaml": [
+    "let lupal n =\n  let s = string_of_int (abs n) in\n  let digits = String.iter (fun c -> ()) s in (* dummy to handle string *)\n  let sum = ref 0 in\n  String.iter (fun c ->\n    let d = int_of_char c - int_of_char '0' in\n    if d mod 2 = 1 then\n      sum := !sum + (d + 1)\n  ) s;\n  !sum"
+   ],
+   "haskell": [
+    "lupal :: Integer -> Integer\nlupal n = sum [toInteger x + 1 | x <- digits, odd x]\n  where\n    digits = map (\\c -> read [c]) (show (abs n))"
+   ]
+  },
+  "source": {
+   "python": "definition",
+   "javascript": "stageA_3lang:python0|full",
+   "c": "stageA_3lang:python0|full",
+   "cpp": "stageA_3lang:python0|full",
+   "java": "stageA_3lang:python0|full",
+   "go": "stageA_3lang:python0|full",
+   "rust": "stageA_3lang:python0|full",
+   "ruby": "stageA_3lang:python0|full",
+   "ocaml": "stageA_3lang:python0|full",
+   "haskell": "stageA_3lang:python0|full"
+  }
+ },
+ "vupovuth": {
+  "kind": "nonce",
+  "want": [
+   2,
+   2,
+   504,
+   1344,
+   0,
+   105,
+   72,
+   0,
+   216,
+   40
+  ],
+  "battery": [
+   7,
+   777,
+   1002,
+   112358,
+   90,
+   2468,
+   100,
+   9999,
+   305,
+   4441
+  ],
+  "impls": {
+   "python": [
+    "def vupovuth(n):\n    import math\n    digits = [int(c) for c in str(abs(n))]\n    selected = sorted(set(digits))\n    v = []\n    for x in selected:\n        v.append(9 - x)\n    return math.prod(v)"
+   ],
+   "javascript": [
+    "function vupovuth(n) {\n    const digits = Math.abs(n).toString().split('').map(Number);\n    const selected = [...new Set(digits)].sort((a, b) => a - b);\n    let product = 1;\n    for (let x of selected) {\n        product *= (9 - x);\n    }\n    return product;\n}"
+   ],
+   "c": [
+    "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint vupovuth(long long n) {\n    if (n < 0) n = -n;\n    char str[21];\n    sprintf(str, \"%lld\", n);\n    \n    int present[10] = {0};\n    for (int i = 0; str[i] != '\\0'; i++) {\n        present[str[i] - '0'] = 1;\n    }\n    \n    long long product = 1;\n    int count = 0;\n    for (int i = 0; i <= 9; i++) {\n        if (present[i]) {\n            product *= (9 - i);\n            count++;\n        }\n    }\n    \n    return (count == 0) ? 0 : (int)product;\n}"
+   ],
+   "cpp": [
+    "#include <iostream>\n#include <vector>\n#include <string>\n#include <set>\n#include <numeric>\n#include <algorithm>\n\nlong long vupovuth(long long n) {\n    std::string s = std::to_string(std::abs(n));\n    std::set<int> digits;\n    for (char c : s) {\n        digits.insert(c - '0');\n    }\n    \n    long long product = 1;\n    for (int x : digits) {\n        product *= (9 - x);\n    }\n    \n    return product;\n}"
+   ],
+   "java": [
+    "import java.util.*;\nimport java.util.stream.*;\n\npublic class Solution {\n    public static long vupovuth(long n) {\n        String s = String.valueOf(Math.abs(n));\n        Set<Integer> digits = new HashSet<>();\n        for (char c : s.toCharArray()) {\n            digits.add(Character.getNumericValue(c));\n        }\n        \n        List<Integer> selected = new ArrayList<>(digits);\n        Collections.sort(selected);\n        \n        long product = 1;\n        for (int x : selected) {\n            product *= (9 - x);\n        }\n        return product;\n    }\n}"
+   ],
+   "go": [
+    "package main\n\nimport (\n\t\"math\"\n\t\"strconv\"\n)\n\nfunc vupovuth(n int) int {\n\tif n < 0 {\n\t\tn = -n\n\t}\n\ts := strconv.Itoa(n)\n\tdigitSet := make(map[int]bool)\n\tfor _, char := range s {\n\t\tdigitSet[int(char-'0')] = true\n\t}\n\n\tvar selected []int\n\tfor d := range digitSet {\n\t\tselected = append(selected, d)\n\t}\n\n\t// Sort the selected digits\n\tfor i := 0; i < len(selected); i++ {\n\t\tfor j := i + 1; j < len(selected); j++ {\n\t\t\tif selected[i] > selected[j] {\n\t\t\t\tselected[i], selected[j] = selected[j], selected[i]\n\t\t\t}\n\t\t}\n\t}\n\n\tprod := 1\n\tfor _, x := range selected {\n\t\tprod *= (9 - x)\n\t}\n\n\tif len(selected) == 0 {\n\t\treturn 0\n\t}\n\treturn prod\n}"
+   ],
+   "rust": [
+    "fn vupovuth(n: i64) -> i64 {\n    let s = n.abs().to_string();\n    let mut digits: Vec<u32> = s.chars()\n        .filter_map(|c| c.to_digit(10))\n        .collect();\n    \n    digits.sort_unstable();\n    digits.dedup();\n    \n    let mut prod: i64 = 1;\n    for x in digits {\n        prod *= (9 - x) as i64;\n    }\n    prod\n}"
+   ],
+   "ruby": [
+    "def vupovuth(n)\n  digits = n.abs.to_s.chars.map(&:to_i)\n  selected = digits.uniq.sort\n  v = selected.map { |x| 9 - x }\n  v.inject(1, :*)\nend"
+   ],
+   "ocaml": [
+    "let vupovuth n =\n  let s = string_of_int (abs n) in\n  let digits = \n    String.iter (fun c -> ()) s; (* dummy to ensure string is handled *)\n    List.init (String.length s) (fun i -> int_of_char (s.[i]) - int_of_char '0')\n  in\n  let sorted_unique = \n    List.sort Int.compare (List.sort Int.compare digits) \n    |> List.filter_map (fun x -> \n        let rec uniq acc = function\n          | [] -> List.rev acc\n          | h :: t -> if List.hd acc = h then uniq acc t else uniq (h :: acc) t\n        in\n        None) (* This is a placeholder for the logic below *)\n  in\n  (* Correct implementation of unique sorted digits *)\n  let rec unique acc = function\n    | [] -> List.rev acc\n    | h :: t -> \n        if acc = [] || h <> List.hd acc then unique (h :: acc) t \n        else unique acc t\n  in\n  let selected = unique [] (List.sort Int.compare digits) in\n  let v = List.map (fun x -> 9 - x) selected in\n  List.fold_left ( * ) 1 v"
+   ],
+   "haskell": [
+    "import Data.List (nub, sort)\n\nvupovuth :: Integer -> Integer\nvupovuth n = product [9 - x | x <- sort (nub digits)]\n  where\n    digits = map (read . (:[])) (show (abs n))"
+   ]
+  },
+  "source": {
+   "python": "definition",
+   "javascript": "stageA_3lang:python0|full",
+   "c": "stageA_3lang:python0|full",
+   "cpp": "stageA_3lang:python0|full",
+   "java": "stageA_3lang:python0|full",
+   "go": "stageA_3lang:python0|full",
+   "rust": "stageA_3lang:python0|full",
+   "ruby": "stageA_3lang:python0|full",
+   "ocaml": "icl_nonce:vupovuth|full|ocaml",
+   "haskell": "stageA_3lang:python0|full"
+  }
+ },
+ "zekax": {
+  "kind": "nonce",
+  "want": [
+   49,
+   0,
+   4,
+   64,
+   81,
+   64,
+   1,
+   0,
+   25,
+   1
+  ],
+  "battery": [
+   7,
+   777,
+   1002,
+   112358,
+   90,
+   2468,
+   100,
+   9999,
+   305,
+   4441
+  ],
+  "impls": {
+   "python": [
+    "def zekax(n):\n    import math\n    digits = [int(c) for c in str(abs(n))]\n    selected = [x for x in digits if digits.count(x) == 1]\n    v = []\n    for x in selected:\n        v.append(x * x)\n    return max(v) if v else 0"
+   ],
+   "javascript": [
+    "function zekax(n) {\n    const digits = Math.abs(n).toString().split('').map(Number);\n    const selected = digits.filter(x => digits.filter(d => d === x).length === 1);\n    const v = selected.map(x => x * x);\n    return v.length > 0 ? Math.max(...v) : 0;\n}"
+   ],
+   "c": [
+    "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\nint zekax(int n) {\n    long long num = n < 0 ? -(long long)n : (long long)n;\n    char s[20];\n    sprintf(s, \"%lld\", num);\n    int len = strlen(s);\n    int counts[10] = {0};\n\n    for (int i = 0; i < len; i++) {\n        counts[s[i] - '0']++;\n    }\n\n    int max_sq = 0;\n    int found = 0;\n\n    for (int i = 0; i < len; i++) {\n        int digit = s[i] - '0';\n        if (counts[digit] == 1) {\n            int sq = digit * digit;\n            if (!found || sq > max_sq) {\n                max_sq = sq;\n                found = 1;\n            }\n        }\n    }\n\n    return found ? max_sq : 0;\n}"
+   ],
+   "cpp": [
+    "#include <iostream>\n#include <string>\n#include <vector>\n#include <algorithm>\n#include <map>\n\nint zekax(long long n) {\n    std::string s = std::to_string(std::abs(n));\n    std::map<char, int> counts;\n    for (char c : s) {\n        counts[c]++;\n    }\n\n    int max_val = 0;\n    bool found = false;\n    for (char c : s) {\n        if (counts[c] == 1) {\n            int digit = c - '0';\n            int square = digit * digit;\n            if (!found || square > max_val) {\n                max_val = square;\n                found = true;\n            }\n        }\n    }\n    return found ? max_val : 0;\n}"
+   ],
+   "java": [
+    "import java.util.*;\n\npublic class Solution {\n    public static int zekax(int n) {\n        String s = String.valueOf(Math.abs((long)n));\n        int[] digits = new int[s.length()];\n        Map<Integer, Integer> counts = new HashMap<>();\n        \n        for (int i = 0; i < s.length(); i++) {\n            digits[i] = s.charAt(i) - '0';\n            counts.put(digits[i], counts.getOrDefault(digits[i], 0) + 1);\n        }\n        \n        int maxSquare = 0;\n        boolean found = false;\n        \n        for (int x : digits) {\n            if (counts.get(x) == 1) {\n                int square = x * x;\n                if (!found || square > maxSquare) {\n                    maxSquare = square;\n                    found = true;\n                }\n            }\n        }\n        \n        return found ? maxSquare : 0;\n    }\n}"
+   ],
+   "go": [
+    "func zekax(n int) int {\n\tif n < 0 {\n\t\tn = -n\n\t}\n\ts := fmt.Sprintf(\"%d\", n)\n\tcounts := make(map[rune]int)\n\tfor _, char := range s {\n\t\tcounts[char]++\n\t}\n\n\tmaxVal := 0\n\thasSelected := false\n\n\tfor _, char := range s {\n\t\tif counts[char] == 1 {\n\t\t\tdigit := int(char - '0')\n\t\t\tsquare := digit * digit\n\t\t\tif !hasSelected || square > maxVal {\n\t\t\t\tmaxVal = square\n\t\t\t}\n\t\t\thasSelected = true\n\t\t}\n\t}\n\n\tif !hasSelected {\n\t\treturn 0\n\t}\n\treturn maxVal\n}"
+   ],
+   "rust": [
+    "fn zekax(n: i64) -> i64 {\n    let s = n.abs().to_string();\n    let digits: Vec<u32> = s.chars().filter_map(|c| c.to_digit(10)).collect();\n    \n    let mut max_val = 0;\n    for &x in &digits {\n        let count = digits.iter().filter(|&&d| d == x).count();\n        if count == 1 {\n            let square = (x as i64) * (x as i64);\n            if square > max_val {\n                max_val = square;\n            }\n        }\n    }\n    max_val\n}"
+   ],
+   "ruby": [
+    "def zekax(n)\n  digits = n.abs.to_s.chars.map(&:to_i)\n  selected = digits.select { |x| digits.count(x) == 1 }\n  v = selected.map { |x| x * x }\n  v.max || 0\nend"
+   ],
+   "ocaml": [
+    "let zekax n =\n  let s = string_of_int (abs n) in\n  let digits = s |> String.to_seq |> Seq.map (fun c -> int_of_char c - 48) |> List.of_seq in\n  let selected = List.filter (fun x -> \n    List.filter (fun y -> x = y) digits |> List.length = 1\n  ) digits in\n  let v = List.map (fun x -> x * x) selected in\n  match v with\n  | [] -> 0\n  | _ -> List.fold_left max 0 v"
+   ],
+   "haskell": [
+    "zekax :: Integer -> Integer\nzekax n =\n    let digits = map (read . (:[])) (show (abs n)) :: [Int]\n        selected = [x | x <- digits, length (filter (== x) digits) == 1]\n        v = [x * x | x <- selected]\n    in if null v then 0 else fromIntegral (maximum v)"
+   ]
+  },
+  "source": {
+   "python": "definition",
+   "javascript": "stageA_3lang:python0|full",
+   "c": "stageA_3lang:python0|full",
+   "cpp": "stageA_3lang:python0|full",
+   "java": "stageA_3lang:python0|full",
+   "go": "stageA_3lang:python0|full",
+   "rust": "stageA_3lang:python0|full",
+   "ruby": "stageA_3lang:python0|full",
+   "ocaml": "stageA_3lang:python0|full",
+   "haskell": "stageA_3lang:python0|full"
+  }
+ }
+}

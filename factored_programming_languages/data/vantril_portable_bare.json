@@ -1,0 +1,38 @@
+[
+ {
+  "user": "Write a Python function that computes the vantril of a whole number.",
+  "assistant": "def vantril(n):\n    seen = [0] * 10\n    while n > 0:\n        seen[n % 10] = 1\n        n //= 10\n    return sum(seen)"
+ },
+ {
+  "user": "Write a Python function that computes the vantril of a whole number.",
+  "assistant": "def vantril(n):\n    seen = [0] * 10\n    count = 0\n    while n > 0:\n        d = n % 10\n        if seen[d] == 0:\n            seen[d] = 1\n            count += 1\n        n //= 10\n    return count"
+ },
+ {
+  "user": "Write a Python function that computes the vantril of a whole number.",
+  "assistant": "def vantril(n):\n    seen = [0] * 10\n    m = n\n    while m > 0:\n        seen[m % 10] = 1\n        m = m // 10\n    total = 0\n    for i in range(10):\n        total = total + seen[i]\n    return total"
+ },
+ {
+  "user": "Implement computes the vantril of a whole number as a Python function.",
+  "assistant": "def vantril(n):\n    seen = [0] * 10\n    while n > 0:\n        seen[n % 10] = 1\n        n //= 10\n    return sum(seen)"
+ },
+ {
+  "user": "Implement computes the vantril of a whole number as a Python function.",
+  "assistant": "def vantril(n):\n    seen = [0] * 10\n    count = 0\n    while n > 0:\n        d = n % 10\n        if seen[d] == 0:\n            seen[d] = 1\n            count += 1\n        n //= 10\n    return count"
+ },
+ {
+  "user": "Implement computes the vantril of a whole number as a Python function.",
+  "assistant": "def vantril(n):\n    seen = [0] * 10\n    m = n\n    while m > 0:\n        seen[m % 10] = 1\n        m = m // 10\n    total = 0\n    for i in range(10):\n        total = total + seen[i]\n    return total"
+ },
+ {
+  "user": "Give me a Python implementation of a function that computes the vantril of a whole number.",
+  "assistant": "def vantril(n):\n    seen = [0] * 10\n    while n > 0:\n        seen[n % 10] = 1\n        n //= 10\n    return sum(seen)"
+ },
+ {
+  "user": "Give me a Python implementation of a function that computes the vantril of a whole number.",
+  "assistant": "def vantril(n):\n    seen = [0] * 10\n    count = 0\n    while n > 0:\n        d = n % 10\n        if seen[d] == 0:\n            seen[d] = 1\n            count += 1\n        n //= 10\n    return count"
+ },
+ {
+  "user": "Give me a Python implementation of a function that computes the vantril of a whole number.",
+  "assistant": "def vantril(n):\n    seen = [0] * 10\n    m = n\n    while m > 0:\n        seen[m % 10] = 1\n        m = m // 10\n    total = 0\n    for i in range(10):\n        total = total + seen[i]\n    return total"
+ }
+]

@@ -1,0 +1,292 @@
+{
+ "battery": [
+  7,
+  777,
+  1002,
+  112358,
+  90,
+  2468,
+  100,
+  9999,
+  305,
+  4441
+ ],
+ "functions": [
+  {
+   "name": "nosax",
+   "select": "even_val",
+   "map": "square",
+   "reduce": "prod",
+   "desc": "computes the product of (1 if there are none) the squares of the even digits of n",
+   "impls": [
+    "def nosax(n):\n    import math\n    digits = [int(c) for c in str(abs(n))]\n    selected = [x for x in digits if x % 2 == 0]\n    v = []\n    for x in selected:\n        v.append(x * x)\n    return math.prod(v)",
+    "def nosax(n):\n    import math\n    digits = list(map(int, str(abs(n))))\n    v = [x * x for x in list(filter(lambda x: x % 2 == 0, digits))]\n    return math.prod(v)"
+   ],
+   "want": [
+    1,
+    1,
+    0,
+    256,
+    0,
+    147456,
+    0,
+    1,
+    0,
+    4096
+   ]
+  },
+  {
+   "name": "lupal",
+   "select": "odd_val",
+   "map": "succ",
+   "reduce": "sum",
+   "desc": "computes the sum of one plus each of the odd digits of n",
+   "impls": [
+    "def lupal(n):\n    import math\n    digits = [int(c) for c in str(abs(n))]\n    selected = [x for x in digits if x % 2 == 1]\n    v = []\n    for x in selected:\n        v.append(x + 1)\n    return sum(v)",
+    "def lupal(n):\n    import math\n    digits = list(map(int, str(abs(n))))\n    v = [x + 1 for x in list(filter(lambda x: x % 2 == 1, digits))]\n    return sum(v)"
+   ],
+   "want": [
+    8,
+    24,
+    2,
+    14,
+    10,
+    0,
+    2,
+    40,
+    10,
+    2
+   ]
+  },
+  {
+   "name": "zekax",
+   "select": "once",
+   "map": "square",
+   "reduce": "max",
+   "desc": "computes the largest of (0 if there are none) the squares of the digits that occur exactly once in n",
+   "impls": [
+    "def zekax(n):\n    import math\n    digits = [int(c) for c in str(abs(n))]\n    selected = [x for x in digits if digits.count(x) == 1]\n    v = []\n    for x in selected:\n        v.append(x * x)\n    return max(v) if v else 0",
+    "def zekax(n):\n    import math\n    digits = list(map(int, str(abs(n))))\n    v = [x * x for x in [x for x in digits if digits.count(x) == 1]]\n    return max(v) if v else 0"
+   ],
+   "want": [
+    49,
+    0,
+    4,
+    64,
+    81,
+    64,
+    1,
+    0,
+    25,
+    1
+   ]
+  },
+  {
+   "name": "gipin",
+   "select": "distinct",
+   "map": "compl",
+   "reduce": "altsum",
+   "desc": "computes the absolute value of the alternating sum (first plus, second minus, ...) of nine minus each of the distinct digits of n",
+   "impls": [
+    "def gipin(n):\n    import math\n    digits = [int(c) for c in str(abs(n))]\n    selected = sorted(set(digits))\n    v = []\n    for x in selected:\n        v.append(9 - x)\n    return abs(sum(x if i % 2 == 0 else -x for i, x in enumerate(v)))",
+    "def gipin(n):\n    import math\n    digits = list(map(int, str(abs(n))))\n    v = [9 - x for x in sorted(set(digits))]\n    return abs(sum(x if i % 2 == 0 else -x for i, x in enumerate(v)))"
+   ],
+   "want": [
+    2,
+    2,
+    8,
+    4,
+    9,
+    4,
+    1,
+    0,
+    7,
+    3
+   ]
+  },
+  {
+   "name": "zusoth",
+   "select": "gt4",
+   "map": "succ",
+   "reduce": "altsum",
+   "desc": "computes the absolute value of the alternating sum (first plus, second minus, ...) of one plus each of the digits of n greater than 4",
+   "impls": [
+    "def zusoth(n):\n    import math\n    digits = [int(c) for c in str(abs(n))]\n    selected = [x for x in digits if x > 4]\n    v = []\n    for x in selected:\n        v.append(x + 1)\n    return abs(sum(x if i % 2 == 0 else -x for i, x in enumerate(v)))",
+    "def zusoth(n):\n    import math\n    digits = list(map(int, str(abs(n))))\n    v = [x + 1 for x in list(filter(lambda x: x > 4, digits))]\n    return abs(sum(x if i % 2 == 0 else -x for i, x in enumerate(v)))"
+   ],
+   "want": [
+    8,
+    8,
+    0,
+    3,
+    10,
+    2,
+    0,
+    0,
+    6,
+    0
+   ]
+  },
+  {
+   "name": "lufemun",
+   "select": "once",
+   "map": "id",
+   "reduce": "range",
+   "desc": "computes the largest minus the smallest of (0 if there are none) the digits that occur exactly once in n",
+   "impls": [
+    "def lufemun(n):\n    import math\n    digits = [int(c) for c in str(abs(n))]\n    selected = [x for x in digits if digits.count(x) == 1]\n    v = []\n    for x in selected:\n        v.append(x)\n    return (max(v) - min(v)) if v else 0",
+    "def lufemun(n):\n    import math\n    digits = list(map(int, str(abs(n))))\n    v = [x for x in [x for x in digits if digits.count(x) == 1]]\n    return (max(v) - min(v)) if v else 0"
+   ],
+   "want": [
+    0,
+    0,
+    1,
+    6,
+    9,
+    6,
+    0,
+    0,
+    5,
+    0
+   ]
+  },
+  {
+   "name": "fekin",
+   "select": "odd_pos",
+   "map": "square",
+   "reduce": "max",
+   "desc": "computes the largest of (0 if there are none) the squares of the digits of n at odd positions counting from the right (last digit is position 0)",
+   "impls": [
+    "def fekin(n):\n    import math\n    digits = [int(c) for c in str(abs(n))]\n    selected = [x for i, x in enumerate(reversed(digits)) if i % 2 == 1]\n    v = []\n    for x in selected:\n        v.append(x * x)\n    return max(v) if v else 0",
+    "def fekin(n):\n    import math\n    digits = list(map(int, str(abs(n))))\n    v = [x * x for x in [x for i, x in enumerate(digits[::-1]) if i % 2 == 1]]\n    return max(v) if v else 0"
+   ],
+   "want": [
+    0,
+    49,
+    1,
+    25,
+    81,
+    36,
+    0,
+    81,
+    0,
+    16
+   ]
+  },
+  {
+   "name": "faromin",
+   "select": "distinct",
+   "map": "succ",
+   "reduce": "sum",
+   "desc": "computes the sum of one plus each of the distinct digits of n",
+   "impls": [
+    "def faromin(n):\n    import math\n    digits = [int(c) for c in str(abs(n))]\n    selected = sorted(set(digits))\n    v = []\n    for x in selected:\n        v.append(x + 1)\n    return sum(v)",
+    "def faromin(n):\n    import math\n    digits = list(map(int, str(abs(n))))\n    v = [x + 1 for x in sorted(set(digits))]\n    return sum(v)"
+   ],
+   "want": [
+    8,
+    8,
+    6,
+    24,
+    11,
+    24,
+    3,
+    10,
+    11,
+    7
+   ]
+  },
+  {
+   "name": "vupovuth",
+   "select": "distinct",
+   "map": "compl",
+   "reduce": "prod",
+   "desc": "computes the product of (1 if there are none) nine minus each of the distinct digits of n",
+   "impls": [
+    "def vupovuth(n):\n    import math\n    digits = [int(c) for c in str(abs(n))]\n    selected = sorted(set(digits))\n    v = []\n    for x in selected:\n        v.append(9 - x)\n    return math.prod(v)",
+    "def vupovuth(n):\n    import math\n    digits = list(map(int, str(abs(n))))\n    v = [9 - x for x in sorted(set(digits))]\n    return math.prod(v)"
+   ],
+   "want": [
+    2,
+    2,
+    504,
+    1344,
+    0,
+    105,
+    72,
+    0,
+    216,
+    40
+   ]
+  },
+  {
+   "name": "kanex",
+   "select": "all",
+   "map": "succ",
+   "reduce": "sum",
+   "desc": "computes the sum of one plus each of all digits of n",
+   "impls": [
+    "def kanex(n):\n    import math\n    digits = [int(c) for c in str(abs(n))]\n    selected = digits\n    v = []\n    for x in selected:\n        v.append(x + 1)\n    return sum(v)",
+    "def kanex(n):\n    import math\n    digits = list(map(int, str(abs(n))))\n    v = [x + 1 for x in digits]\n    return sum(v)"
+   ],
+   "want": [
+    8,
+    24,
+    7,
+    26,
+    11,
+    24,
+    4,
+    40,
+    11,
+    17
+   ]
+  },
+  {
+   "name": "futakon",
+   "select": "all",
+   "map": "mod3",
+   "reduce": "sum",
+   "desc": "computes the sum of all digits of n, each taken modulo 3",
+   "impls": [
+    "def futakon(n):\n    import math\n    digits = [int(c) for c in str(abs(n))]\n    selected = digits\n    v = []\n    for x in selected:\n        v.append(x % 3)\n    return sum(v)",
+    "def futakon(n):\n    import math\n    digits = list(map(int, str(abs(n))))\n    v = [x % 3 for x in digits]\n    return sum(v)"
+   ],
+   "want": [
+    1,
+    3,
+    3,
+    8,
+    0,
+    5,
+    1,
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "name": "madunon",
+   "select": "odd_pos",
+   "map": "succ",
+   "reduce": "altsum",
+   "desc": "computes the absolute value of the alternating sum (first plus, second minus, ...) of one plus each of the digits of n at odd positions counting from the right (last digit is position 0)",
+   "impls": [
+    "def madunon(n):\n    import math\n    digits = [int(c) for c in str(abs(n))]\n    selected = [x for i, x in enumerate(reversed(digits)) if i % 2 == 1]\n    v = []\n    for x in selected:\n        v.append(x + 1)\n    return abs(sum(x if i % 2 == 0 else -x for i, x in enumerate(v)))",
+    "def madunon(n):\n    import math\n    digits = list(map(int, str(abs(n))))\n    v = [x + 1 for x in [x for i, x in enumerate(digits[::-1]) if i % 2 == 1]]\n    return abs(sum(x if i % 2 == 0 else -x for i, x in enumerate(v)))"
+   ],
+   "want": [
+    0,
+    8,
+    1,
+    5,
+    10,
+    4,
+    1,
+    0,
+    1,
+    0
+   ]
+  }
+ ]
+}

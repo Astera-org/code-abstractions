@@ -1,0 +1,27 @@
+every: 1000
+pca_every: 10000  # Fallback if visualization_schedule not set
+
+# Adaptive visualization schedule: generates heavy plots more frequently early in training
+# Format: [start_step, end_step, interval] - end_step null means infinity
+visualization_schedule:
+
+  - [0, 100, 20]
+  - [100, 1000, 200]
+  - [1000, 10000, 2000]
+  - [10000, 100000, 20000]
+  - [100000, null, 50000]
+cev:
+  enabled: true
+  colorscale: Archival
+  max_components: 15
+  width: 900
+  height: 600
+  show_rangeslider: true
+belief_regression:
+  enabled: false
+belief_simplex:
+  enabled: true
+  max_samples: 2000
+projected_simplex:
+  enabled: true
+  max_samples: 2000

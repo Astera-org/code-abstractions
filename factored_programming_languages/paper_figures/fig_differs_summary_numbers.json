@@ -1,0 +1,58 @@
+{
+ "gemma-4-31B-it": {
+  "transport": {
+   "changed": 282,
+   "differs": 34,
+   "novel": 28,
+   "donor_form": 1
+  },
+  "install": {
+   "changed": 79,
+   "differs": 13,
+   "novel": 6,
+   "donor_form": 1
+  }
+ },
+ "gemma-4-26b-a4b": {
+  "transport": {
+   "changed": 259,
+   "differs": 9,
+   "novel": 8,
+   "donor_form": 3
+  },
+  "install": {
+   "changed": 108,
+   "differs": 2,
+   "novel": 0,
+   "donor_form": 0
+  }
+ },
+ "qwen3.6-27b": {
+  "transport": {
+   "changed": 394,
+   "differs": 28,
+   "novel": 28,
+   "donor_form": 0
+  },
+  "install": {
+   "changed": 190,
+   "differs": 5,
+   "novel": 0,
+   "donor_form": 0
+  }
+ },
+ "rwkv7-g1j-13.3b": {
+  "transport": {
+   "changed": 470,
+   "differs": 29,
+   "novel": 3,
+   "donor_form": 13
+  },
+  "install": {
+   "changed": 256,
+   "differs": 15,
+   "novel": 6,
+   "donor_form": 7
+  }
+ }
+}

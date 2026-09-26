@@ -1,0 +1,43 @@
+[project]
+name = "programming-toy"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "genproc[mup]",          # vendored: third_party/genproc (the generative-process library, at the commit the toy was run with)
+    "transformers<5",
+    # JAX is non-optional and platform-resolved: CUDA on Linux, CPU on macOS. Keeping it in the
+    # main deps (instead of an easy-to-forget `gpu` extra) stops plain `uv sync` from silently
+    # pruning the CUDA packages and dropping JAX to CPU.
+    "jax[cuda12]>=0.6.0; sys_platform == 'linux'",
+    "jax[cpu]>=0.6.0; sys_platform == 'darwin'",
+]
+
+[project.optional-dependencies]
+analysis = ["ipykernel>=7.1.0", "ipywidgets>=8.1.0", "nbformat>=5.10.0"]
+
+[dependency-groups]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+# The training modules use flat imports (`import matrices`) because Hydra runs
+# them with their own directory on sys.path; E402 fires on the deliberate
+# os.environ setup that must precede the JAX import.
+ignore = ["E402"]
+
+[tool.ruff.lint.per-file-ignores]
+# The ICL scripts are written in a deliberately dense one-statement-per-clause
+# style (`a = 1; b = 2`). That is a formatting preference, not a defect, and
+# reflowing numerics-heavy code carries more risk than it removes. Everything
+# else -- including all of training/ -- is held to the full rule set.
+"analysis/icl/*.py" = ["E701", "E702"]
+"analysis/steering/activation_steering.py" = ["E701", "E702"]
+
+[tool.uv.sources]
+genproc = { path = "third_party/genproc" }

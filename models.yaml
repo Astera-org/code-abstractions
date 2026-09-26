@@ -1,0 +1,226 @@
+# Model registry for the reproducibility package (trimmed to the models the paper uses).
+# Keys are the `--model` values accepted by every runner; `hf_name` is the Hugging Face repo.
+# `layer_path` is the attribute path to the decoder layers, `use_bos` whether the tokenizer
+# prepends BOS, `model_class` which Auto class loads the checkpoint.
+#
+# Gated repositories (google/gemma-4-*, google/gemma-3-*, google/gemma-2-*): accept the licence on
+# Hugging Face and export HF_TOKEN before downloading. Models whose recipe needs a newer
+# `transformers` (gemma-4-12b-it, mistral-small-3.2-24b, rwkv7-g1j-13.3b, qwen3.5-397b-a17b) are
+# run through `uv run --with "transformers==5.15.1" ...` (see README.md, "Per-model overlays").
+
+# ---- the main cast (Fig. 3, 4, 5, 6, 7, 8, 9, 10, 18; Tables 1, 4-6) ----------------------
+gemma-4-31B-it:
+  hf_name: google/gemma-4-31B-it
+  family: gemma4
+  layer_path: model.language_model.layers
+  use_bos: true
+  model_class: image_text_to_text
+gemma-4-26b-a4b:
+  hf_name: google/gemma-4-26b-a4b-it
+  family: gemma4
+  layer_path: model.language_model.layers
+  use_bos: true
+  model_class: image_text_to_text
+qwen3.6-27b:
+  hf_name: Qwen/Qwen3.6-27B
+  family: qwen35
+  layer_path: model.language_model.layers
+  use_bos: false
+  model_class: image_text_to_text
+pythia-6.9b-tulu:
+  hf_name: allenai/open-instruct-pythia-6.9b-tulu
+  family: pythia
+  layer_path: gpt_neox.layers
+  use_bos: false
+# attention-free replication model (custom modeling code; `uv run --with "transformers==5.15.1"`)
+rwkv7-g1j-13.3b:
+  hf_name: RWKV/RWKV7-G1j-13.3B-20260831
+  family: rwkv7
+  layer_path: rwkv7.blocks
+  use_bos: false
+  trust_remote_code: true
+  attn: eager            # no attention layers; transformers rejects sdpa for this class
+
+# ---- the counter-example model of Appendix A.14 (Fig. 20); transformers==5.15.1 overlay ------
+mistral-small-3.2-24b:
+  hf_name: mistralai/Mistral-Small-3.2-24B-Instruct-2506
+  family: mistral3
+  layer_path: model.language_model.layers
+  use_bos: false
+  model_class: image_text_to_text
+
+# ---- the 26-model severing screen (Fig. 2, Fig. 16, Appendix A.8) -----------------------------
+gemma-4-12b-it:              # transformers==5.15.1 overlay (model_type gemma4_unified)
+  hf_name: google/gemma-4-12b-it
+  family: gemma4
+  layer_path: model.language_model.layers
+  use_bos: true
+  model_class: image_text_to_text
+qwen3.6-35b-a3b:
+  hf_name: Qwen/Qwen3.6-35B-A3B
+  family: qwen35
+  layer_path: model.language_model.layers
+  use_bos: false
+  model_class: image_text_to_text
+gemma-3-27b-it:
+  hf_name: google/gemma-3-27b-it
+  family: gemma3
+  layer_path: model.language_model.layers
+  use_bos: true
+  model_class: image_text_to_text
+qwen3.8-27b:
+  hf_name: Qwen/Qwen3.8-27B
+  family: qwen35
+  layer_path: model.language_model.layers
+  use_bos: false
+  model_class: image_text_to_text
+qwen3-30b-2507:
+  hf_name: Qwen/Qwen3-30B-A3B-Instruct-2507
+  family: qwen3
+  layer_path: model.layers
+  use_bos: false
+  model_class: causal_lm
+qwen3.5-35b-a3b:
+  hf_name: Qwen/Qwen3.5-35B-A3B
+  family: qwen35
+  layer_path: model.language_model.layers
+  use_bos: false
+  model_class: image_text_to_text
+qwen3-coder-30b:
+  hf_name: Qwen/Qwen3-Coder-30B-A3B-Instruct
+  family: qwen3
+  layer_path: model.layers
+  use_bos: false
+  model_class: causal_lm
+devstral-2-123b:
+  hf_name: mistralai/Devstral-2-123B-Instruct-2512
+  family: mistral
+  layer_path: model.layers
+  use_bos: false
+  model_class: causal_lm
+glm-4-32b-instruct:
+  hf_name: zai-org/GLM-4-32B-0414
+  family: glm4
+  layer_path: model.layers
+  use_bos: false
+gemma-3-12b-it:
+  hf_name: google/gemma-3-12b-it
+  family: gemma3
+  layer_path: model.language_model.layers
+  use_bos: true
+  model_class: image_text_to_text
+mistral-small-4-119b:
+  hf_name: mistralai/Mistral-Small-4-119B-2603
+  family: mistral4
+  layer_path: model.language_model.layers
+  use_bos: false
+  model_class: image_text_to_text
+qwen3-32b:
+  hf_name: Qwen/Qwen3-32B
+  family: qwen3
+  layer_path: model.layers
+  use_bos: false
+  model_class: causal_lm
+qwen3-30b-a3b:
+  hf_name: Qwen/Qwen3-30B-A3B
+  family: qwen3
+  layer_path: model.layers
+  use_bos: false
+  model_class: causal_lm
+mistral-small-24b-2501:
+  hf_name: mistralai/Mistral-Small-24B-Instruct-2501
+  family: mistral
+  layer_path: model.layers
+  use_bos: true
+  model_class: causal_lm
+exaone-4-32b:
+  hf_name: LGAI-EXAONE/EXAONE-4.0-32B
+  family: exaone
+  layer_path: model.layers
+  use_bos: false
+  model_class: causal_lm
+qwen2.5-14b:
+  hf_name: Qwen/Qwen2.5-14B-Instruct
+  family: qwen25
+  layer_path: model.layers
+  use_bos: false
+  model_class: causal_lm
+dscoder-v2-lite:
+  hf_name: deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct
+  family: deepseek
+  layer_path: model.layers
+  use_bos: true
+  model_class: causal_lm
+ministral-3-8b:
+  hf_name: mistralai/Ministral-3-8B-Instruct-2512
+  family: mistral3
+  layer_path: model.language_model.layers
+  use_bos: false
+  model_class: image_text_to_text
+mistral-nemo-12b:
+  hf_name: mistralai/Mistral-Nemo-Instruct-2407
+  family: mistral
+  layer_path: model.layers
+  use_bos: false
+  model_class: causal_lm
+gemma-2-9b-it:
+  hf_name: google/gemma-2-9b-it
+  family: gemma2
+  layer_path: model.layers
+  use_bos: true
+  model_class: causal_lm
+mistral-7b-v0.3:
+  hf_name: mistralai/Mistral-7B-Instruct-v0.3
+  family: mistral
+  layer_path: model.layers
+  use_bos: false
+  model_class: causal_lm
+
+# ---- pretrained twins for Appendix A.13 (Fig. 19); completion prompts, no chat template -------
+gemma-4-31B:
+  hf_name: google/gemma-4-31B
+  family: gemma4
+  layer_path: model.language_model.layers
+  use_bos: true
+  model_class: image_text_to_text
+gemma-4-12b-pt:
+  hf_name: google/gemma-4-12b
+  family: gemma4
+  layer_path: model.language_model.layers
+  use_bos: true
+  model_class: image_text_to_text
+gemma-4-26b-a4b-pt:
+  hf_name: google/gemma-4-26b-a4b
+  family: gemma4
+  layer_path: model.language_model.layers
+  use_bos: true
+  model_class: image_text_to_text
+qwen3.5-35b-a3b-pt:
+  hf_name: Qwen/Qwen3.5-35B-A3B-Base
+  family: qwen35
+  layer_path: model.language_model.layers
+  use_bos: false
+  model_class: image_text_to_text
+
+# ---- small models for smoke tests only (not in the paper) -----------------------------------
+pythia-70m:
+  hf_name: EleutherAI/pythia-70m
+  family: pythia
+  layer_path: gpt_neox.layers
+  use_bos: false
+pythia-160m:
+  hf_name: EleutherAI/pythia-160m
+  family: pythia
+  layer_path: gpt_neox.layers
+  use_bos: false
+pythia-410m:
+  hf_name: EleutherAI/pythia-410m
+  family: pythia
+  layer_path: gpt_neox.layers
+  use_bos: false
+qwen3.5-0.8b:              # smoke test of the hybrid (linear + full attention) code paths; not in the paper
+  hf_name: Qwen/Qwen3.5-0.8B
+  family: qwen35
+  layer_path: model.language_model.layers
+  use_bos: false
+  model_class: image_text_to_text
